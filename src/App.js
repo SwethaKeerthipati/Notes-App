@@ -40,8 +40,6 @@ const App = () => {
       text: text,
       date: date.toLocaleDateString(),
     };
-    // const newNotes = [...notes, newNote];
-    // setNotes(newNotes);
     const newNotes = [newNote, ...notes];
     setNotes(newNotes);
   };
