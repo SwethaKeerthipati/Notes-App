@@ -10,7 +10,6 @@ const App = () => {
 
   const [searchText, setSearchText] = useState("");
   const [darkMode, setDarkMode] = useState(false);
-  const [hasSearchResults, setHasSearchResults] = useState(true);
 
   useEffect(() => {
     try {
@@ -57,10 +56,7 @@ const App = () => {
     <div className={`${darkMode && "dark-mode"}`}>
       <div className="container">
         <Header handleToggleDarkMode={setDarkMode} />
-        <Search
-          handleSearchNote={setSearchText}
-          hasSearchResults={hasSearchResults}
-        />
+        <Search handleSearchNote={setSearchText} />
         <NotesList
           notes={notes.filter((note) =>
             note.text.toLowerCase().includes(searchText)
