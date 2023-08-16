@@ -1,7 +1,7 @@
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 
-const Search = ({ handleSearchNote }) => {
+const Search = ({ handleSearchNote, hasSearchResults }) => {
   return (
     <div className="search">
       <SearchIcon className="search-icons" size="1.3em" />

@@ -22,7 +22,7 @@
 }
 
 .note {
-  background-color: aqua;
+  background-color: rgb(235, 241, 189);
   /* margin-bottom: 10px; */
   border-radius: 10px;
   padding: 1rem;
@@ -34,18 +34,18 @@
 }
 
 .note .new {
-  background-color: yellow;
+  background-color: rgb(235, 241, 189);
 }
 textarea {
   border: none;
   resize: none;
-  background-color: aqua;
+  background-color: rgb(235, 241, 189);
 }
 textarea:focus {
   outline: none;
 }
 .save {
-  background-color: #1ba4bf;
+  background-color: #e3eaec;
   border: none;
   border-radius: 15px;
   padding: 5px 10px 5px 10px;
@@ -54,6 +54,11 @@ textarea:focus {
 .save:hover {
   background-color: #ededed;
   cursor: pointer;
+}
+.note-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .notes-footer {
   display: flex;

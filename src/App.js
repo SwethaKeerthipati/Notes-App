@@ -6,32 +6,18 @@ import Search from "./components/Search";
 import Header from "./components/Header";
 
 const App = () => {
-  const [notes, setNotes] = useState([
-    {
-      id: nanoid(),
-      text: "Add your notes 1",
-      date: "05/07/2023",
-    },
-    {
-      id: nanoid(),
-      text: "Add your notes 2",
-      date: "06/07/2023",
-    },
-    {
-      id: nanoid(),
-      text: "Add your notes 3",
-      date: "07/07/2023",
-    },
-  ]);
+  const [notes, setNotes] = useState(null);
 
   const [searchText, setSearchText] = useState("");
   const [darkMode, setDarkMode] = useState(false);
+  const [hasSearchResults, setHasSearchResults] = useState(true);
 
   useEffect(() => {
     try {
       const savedNotes = JSON.parse(
         localStorage.getItem("react-notes-app-data")
       );
+      console.log("Saved notes:", savedNotes);
       if (savedNotes) {
         setNotes(savedNotes);
       }
@@ -41,28 +27,40 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    if (notes === null) {
+      return;
+    }
+    console.log("Saving notes to local storage:", notes);
     localStorage.setItem("react-notes-app-data", JSON.stringify(notes));
   }, [notes]);
 
   const addNote = (text) => {
     const date = new Date();
     const newNote = {
-      id: nanoid,
+      id: nanoid(),
       text: text,
       date: date.toLocaleDateString(),
     };
-    const newNotes = [...notes, newNote];
+    // const newNotes = [...notes, newNote];
+    // setNotes(newNotes);
+    const newNotes = [newNote, ...notes];
     setNotes(newNotes);
   };
   const deleteNote = (id) => {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
   };
+  if (!notes) {
+    return <h3>Loading..</h3>;
+  }
   return (
     <div className={`${darkMode && "dark-mode"}`}>
       <div className="container">
         <Header handleToggleDarkMode={setDarkMode} />
-        <Search handleSearchNote={setSearchText} />
+        <Search
+          handleSearchNote={setSearchText}
+          hasSearchResults={hasSearchResults}
+        />
         <NotesList
           notes={notes.filter((note) =>
             note.text.toLowerCase().includes(searchText)

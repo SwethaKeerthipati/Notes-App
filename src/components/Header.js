@@ -1,4 +1,5 @@
 import React from "react";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 const Header = ({ handleToggleDarkMode }) => {
   return (
@@ -10,7 +11,7 @@ const Header = ({ handleToggleDarkMode }) => {
         }
         className="save"
       >
-        Toggle Mode
+        <DarkModeIcon />
       </button>
     </div>
   );
